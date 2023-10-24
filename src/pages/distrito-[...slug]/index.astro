@@ -1,10 +1,8 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+---
+import { DISTRITOS } from '../../consts';
 
-export const SITE_TITLE = 'Astro Blog';
-export const SITE_DESCRIPTION = 'Welcome to my website!';
-
-export const DISTRITOS = [
+export async function getStaticPaths() {
+  const pages = [
     {
         name: 'Aveiro',
         slug: 'aveiro',
@@ -36,6 +34,26 @@ export const DISTRITOS = [
     {
         name: 'Guarda',
         slug: 'guarda',
+    },
+    {
+        name: 'Aveiro',
+        slug: 'aveiro',
+    },
+    {
+        name: 'Aveiro',
+        slug: 'aveiro',
+    },
+    {
+        name: 'Aveiro',
+        slug: 'aveiro',
+    },
+    {
+        name: 'Aveiro',
+        slug: 'aveiro',
+    },
+    {
+        name: 'Aveiro',
+        slug: 'aveiro',
     },
     {
         name: 'leiria',
@@ -80,5 +98,24 @@ export const DISTRITOS = [
     {
         name: 'Viseu',
         slug: 'viseu',
-    }  
-]
+    },
+  ];
+  
+  return pages.map(({ slug, name }) => {
+     return {
+      params: { slug },
+      props: { name },
+    };
+  });
+}
+
+const { name } = Astro.props;
+---
+<html>
+  <head>
+    <title>{name}</title>
+  </head>
+  <body>
+    <h1>{name}</h1>
+   </body>
+</html>
